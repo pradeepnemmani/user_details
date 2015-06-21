@@ -1,10 +1,11 @@
 UserDetails::Application.routes.draw do
   
 
+  resources :users
   match '/contact', :to => 'pages#contact'
   match '/about',   :to => 'pages#about'
   match '/help',    :to => 'pages#help'
-  match '/new',     :to => 'users#new'
+  match '/signup',     :to => 'users#new'
   
 
   get "pages/home"
