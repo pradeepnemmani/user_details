@@ -25,6 +25,17 @@ email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
  	 validates 	:password, :presence => true,
  	 						:confirmation => :true,
  	 						:length 	=> { :minimum => 6, :maximum => 40 } 
- 
 
+ 	 before_save :encrypt_password
+
+ 	 private 
+ 	 
+ 	 def encrypt_password
+ 	 	self.encrypted_password = encrypt(password)
+ 	 end
+ 	 
+ 	 def encrypt(string)
+ 	 	string #not yet implimented...
+ 	 end
+ 
 end
