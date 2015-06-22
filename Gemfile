@@ -8,6 +8,8 @@ group :development do
 gem 'sqlite3', '1.3.5'
 gem 'rspec-rails'
 gem 'annotate'
+#gem 'factory_girl_rails'
+gem 'gravatar_image_tag', '0.1.0'
 
 end
 
@@ -30,7 +32,7 @@ gem 'jquery-rails', '2.0.1'
 group :test do
 	#gem 'capybara', '1.1.2'
 #	gem 'rspec-rails', '2.0.0.beta.18'
-end
+end 
 
 #group :production do
 # gem  'pg', '0.12.2'

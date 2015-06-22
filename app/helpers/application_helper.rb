@@ -1,7 +1,8 @@
 module ApplicationHelper
 	#Returns a title on a per-page basis.
 	def title
-		base_title = "ROR | #{@name}"
+		base_title = "#{@name}"
+		puts base_title
 		return base_title
 	end
 
