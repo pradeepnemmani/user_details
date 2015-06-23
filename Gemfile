@@ -10,6 +10,9 @@ gem 'rspec-rails'
 gem 'annotate'
 #gem 'factory_girl_rails'
 gem 'gravatar_image_tag', '0.1.0'
+gem 'execjs'
+
+gem 'therubyracer', :platforms => :ruby
 
 end
 
