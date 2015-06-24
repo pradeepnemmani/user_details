@@ -172,17 +172,39 @@ it "should have a welcome message " do
   end
 
   describe " authenticate of edit/update actions" do
+
     before(:each) do
       @user = Factory(:user)
     end
+
+    describe " for non-igned-in users" do
     it "should deny access to 'edit'" do
       get  :edit, id => @user
       response.should redirect_to(signin_path)
       flash[:notice].should =~ /sign in/i
     end
+
       it "should deny access to 'update'" do
         put :update, id =>@user, :user =>{}
         response.should redirect_to(signin_path)
     end
   end
+   describe " for signed-in-users" do
+
+    before(:each) do
+      wrong_user = Factory(:user, :email => "user@example.net")
+      test_sign_in(wrong_user)
+    end
+
+    it "should requor  matching  users for 'edit' " do
+      get :edit, :id =>@user
+      response.should redirect_to('pages/home')
+    end
+
+    it "should requir matching users for ' updating'" do
+      put :update, :id => @user, :user => {}
+      response.should redirect_to('pages/home')
+    end
+  end
+end
 end
