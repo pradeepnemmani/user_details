@@ -1,7 +1,15 @@
 class UsersController < ApplicationController
 
-  before_filter :authenticate, :only => [:edit,:update]
+  before_filter :authenticate, :only => [:index,:edit,:update]
 
+
+  def index
+
+    @name ="All users"
+    @users= User.all
+  
+   end
+      
   def new
   	@name = "Sign Up"
   	@user =User.new
@@ -25,7 +33,7 @@ class UsersController < ApplicationController
   	
   end
 
-def edit
+def edit 
   @name = "Edit user"
   @user= User.find(params[:id])
 
