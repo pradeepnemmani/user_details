@@ -33,12 +33,13 @@ email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
  	 end
 
 	class << self 
-		
+
 		def authenticate(email, submitted_password)
 			user =User.find_by_email(email)
 			return nil if user.nil?
 			return user if user.has_password?(submitted_password)
 		end
+		
 		def authenticate_with_salt(id, cookie_salt)
 
 			user = User.find_by_id(id)
