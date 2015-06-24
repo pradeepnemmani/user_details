@@ -14,6 +14,9 @@ gem 'execjs'
 
 gem 'therubyracer', :platforms => :ruby
 
+gem 'faker'
+gem 'will_paginate'
+
 end
 
 # Gems used only for assets and not required

@@ -6,8 +6,8 @@ class UsersController < ApplicationController
   def index
 
     @name ="All users"
-    @users= User.all
-  
+    # @users= User.al
+  @users =User.paginate(:page => params[:page])
    end
       
   def new
@@ -25,6 +25,7 @@ class UsersController < ApplicationController
   	@name = "Sign up"
   	@user = User.new(params[:user])
   	if @user.save
+
       sign_in @user
   			redirect_to @user, :flash => {:success => "Welcome to the sample app!"}
   	else
