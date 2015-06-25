@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
 
-  before_filter :authenticate, :only => [:index,:edit,:update]
+  before_filter :authenticate, :only => [:index,:edit,:update, :destroy]
+  before_filter :admin_user,    :only => :destroy
 
 
   def index
@@ -50,12 +51,21 @@ def update
   end
   
 end
+
+def destroy
+    User.find(params[:id]).destroy
+    redirect_to users_path, :flash => { :success => "User destroyed."}
+  end
 private 
 
     def authenticate
       # deny_acces in sessions_helper class
        deny_access unless  signed_in?
         
+    end
+    def admin_user
+      user = User.find(params[:id])
+       redirect_to(signin_path) if (!current_user.admin? && current_user?(user))
     end
 end
 

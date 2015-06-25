@@ -7,5 +7,5 @@ Factory.define :user do |user|
 
 	Factory.sequence :email do |n|
 
-		"person #{n}@example.com" 
+		"person #{n}@example.com " 
 	end
