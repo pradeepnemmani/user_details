@@ -37,6 +37,10 @@ email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
  	 encrypted_password == encrypt(submitted_password)
  	 end
 
+ 	 def feed
+ 	 	Micropost.where("user_id = ?", id)
+ 	 end
+
 	class << self 
 
 		def authenticate(email, submitted_password)
