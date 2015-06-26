@@ -2,6 +2,7 @@ class PagesController < ApplicationController
 
   def home
   	@name = "Home";
+    @micropost = Micropost.new if signed_in?
   	puts "in home"
   end
 

@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-
+# SEE session_helpers class , then we can find authenticate method
   before_filter :authenticate, :only => [:index,:edit,:update, :destroy]
   before_filter :admin_user,    :only => :destroy
 
@@ -19,6 +19,7 @@ class UsersController < ApplicationController
   
   def show 
   	@user= User.find(params[:id])
+    @microposts = @user.microposts.paginate(:page => params[:page])
   	@name = @user.name	  
   end
 
@@ -56,13 +57,10 @@ def destroy
     User.find(params[:id]).destroy
     redirect_to users_path, :flash => { :success => "User destroyed."}
   end
+  
 private 
 
-    def authenticate
-      # deny_acces in sessions_helper class
-       deny_access unless  signed_in?
-        
-    end
+    
     def admin_user
       user = User.find(params[:id])
        redirect_to(signin_path) if (!current_user.admin? && current_user?(user))

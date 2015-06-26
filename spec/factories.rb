@@ -9,3 +9,8 @@ Factory.define :user do |user|
 
 		"person #{n}@example.com " 
 	end
+	Factory.define :micropost do |micropost|
+
+		micropost.content "Foo bar"
+		micropost.associates :user
+	end

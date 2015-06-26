@@ -16,6 +16,12 @@ module SessionsHelper
 	def signed_in?
 		!current_user.nil?
 	end
+	
+	def authenticate
+      # deny_acces in sessions_helper class
+       deny_access unless  signed_in?
+        
+    end
 
 	def sign_out
 		cookies.delete(:remember_token)
